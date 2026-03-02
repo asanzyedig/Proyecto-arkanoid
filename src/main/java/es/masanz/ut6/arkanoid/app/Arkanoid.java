@@ -94,7 +94,9 @@ public class Arkanoid extends Application {
         //  La lista de "ladrillos" la deberas obtener del nivel
         sprites = new HashMap<>();
         Bola bola = new Bola(nivel.getColumnas() / 2 * TAM_CASILLA, (nivel.getFilas()-4) * TAM_CASILLA);
-        sprites.put("Potenciadores", null);
+        List<Sprite> potenciadores = null;
+
+        sprites.put("Potenciadores", potenciadores);
         sprites.put("Bolas", (List<Sprite>) bola);
 
         // NO TOCAR ESTAS LINEAS
