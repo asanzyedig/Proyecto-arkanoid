@@ -95,9 +95,12 @@ public class Arkanoid extends Application {
         sprites = new HashMap<>();
         Bola bola = new Bola(nivel.getColumnas() / 2 * TAM_CASILLA, (nivel.getFilas()-4) * TAM_CASILLA);
         List<Sprite> potenciadores = null;
-
+        List<Sprite> bolas = null;
+        bolas.add(bola);
+        List<Sprite> ladrillos = null;
         sprites.put("Potenciadores", potenciadores);
-        sprites.put("Bolas", (List<Sprite>) bola);
+        sprites.put("Bolas", bolas);
+        sprites.put("Ladrillos", ladrillos);
 
         // NO TOCAR ESTAS LINEAS
         paleta = new Paleta(nivel.getColumnas()/2 - TAM_CASILLA*6/2, (nivel.getFilas()-3)*TAM_CASILLA, 4, TAM_CASILLA*6, TAM_CASILLA, 0, 0);
