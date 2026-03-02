@@ -2,6 +2,8 @@ package es.masanz.ut6.arkanoid.model;
 
 import javafx.scene.canvas.GraphicsContext;
 
+import java.util.List;
+
 import static es.masanz.ut6.arkanoid.conf.Const.*;
 
 public class Ladrillo extends Sprite {
@@ -37,6 +39,15 @@ public class Ladrillo extends Sprite {
 
     public Potenciador obtenerPotenciador() {
         // TODO 05: Devolver un potenciador u otro con la probabilidad que se desee
+        int probabilidad = (int) (Math.random()*10)+1;
+            if (probabilidad > 0 && probabilidad <= 4) {
+                Potenciador potMenorPaleta = new PotAnchuraNeg(1,1);
+            } else if (probabilidad < 7) {
+
+            } else {
+
+            }
+
         return null;
     }
 

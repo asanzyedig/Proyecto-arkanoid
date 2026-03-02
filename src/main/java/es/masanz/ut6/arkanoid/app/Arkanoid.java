@@ -1,5 +1,6 @@
 package es.masanz.ut6.arkanoid.app;
 
+import es.masanz.ut6.arkanoid.dao.NivelDao;
 import es.masanz.ut6.arkanoid.model.*;
 import es.masanz.ut6.arkanoid.service.NivelService;
 import javafx.animation.KeyFrame;
@@ -18,6 +19,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -48,7 +50,7 @@ public class Arkanoid extends Application {
         Scene scene = new Scene(root);
 
         // TODO 11: inicializa el nivel
-        nivel = null;
+        nivel = NivelDao.obtenerNivel(1);
 
         lienzo = new Canvas();
         generarMapa();
@@ -90,7 +92,10 @@ public class Arkanoid extends Application {
         //  La lista de "potenciadores" debera estar vacia
         //  La lista de "bolas" debera contener unicamente la bola que esta aqui definida
         //  La lista de "ladrillos" la deberas obtener del nivel
+        sprites = new HashMap<>();
         Bola bola = new Bola(nivel.getColumnas() / 2 * TAM_CASILLA, (nivel.getFilas()-4) * TAM_CASILLA);
+        sprites.put("Potenciadores", null);
+        sprites.put("Bolas", (List<Sprite>) bola);
 
         // NO TOCAR ESTAS LINEAS
         paleta = new Paleta(nivel.getColumnas()/2 - TAM_CASILLA*6/2, (nivel.getFilas()-3)*TAM_CASILLA, 4, TAM_CASILLA*6, TAM_CASILLA, 0, 0);
@@ -144,10 +149,23 @@ public class Arkanoid extends Application {
 
     private void moverLadrillos() {
         // TODO 13: Deberas mover todos los ladrillos
+
+        for (List<Sprite> ladrillo : sprites.values()) {
+            if (ladrillo instanceof Ladrillo) {
+                ((Ladrillo) ladrillo).mover(nivel);
+            }
+        }
     }
 
     private List<Sprite> moverBolas() {
         // TODO 14: Deberas mover todas las bolas y devolver aquellas que no se puedan mover
+
+        for (List<Sprite> bola : sprites.values()) {
+            if (bola instanceof Bola) {
+                ((Bola) bola).mover(nivel);
+                return bola;
+            }
+        }
         return null;
     }
 

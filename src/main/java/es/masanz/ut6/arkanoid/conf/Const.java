@@ -6,8 +6,8 @@ public class Const {
 
     // TODO 10: Configura estos parametros para conectar con tu BBDD
     public static final String ESQUEMA = "arkanoid";
-    public static final String USER = "root";
-    public static final String PASS = "root";
+    public static final String USER = "arkanoid";
+    public static final String PASS = "arkanoid";
 
     public static final double TAM_CASILLA = 30;
 
